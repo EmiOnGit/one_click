@@ -17,8 +17,7 @@ use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
 use bevy::prelude::*;
 use map::MapPlugin;
 
-// See https://bevy-cheatbook.github.io/programming/states.html
-// Or https://github.com/bevyengine/bevy/blob/main/examples/ecs/state.rs
+/// States of the games
 #[derive(States, Default, Clone, Eq, PartialEq, Debug, Hash)]
 enum GameState {
     // During the loading State the LoadingPlugin will load our assets

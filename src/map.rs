@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 use bevy_ecs_ldtk::{
-    prelude::LdtkEntityAppExt, LdtkEntity, LdtkPlugin, LdtkWorldBundle, LevelSelection,
+    LdtkPlugin, LdtkWorldBundle, LevelSelection,
 };
 
 use crate::{loading::MapAssets, GameState};
@@ -10,12 +10,15 @@ pub struct MapPlugin;
 impl Plugin for MapPlugin {
     fn build(&self, app: &mut App) {
         app.add_plugin(LdtkPlugin)
+            // Indicates the current level
+            // Currently, we always start at level 0
             .insert_resource(LevelSelection::Index(0))
-            .add_system(load_ldtk.in_schedule(OnEnter(GameState::Playing)))
-            .register_ldtk_entity::<LevelMap>("MapEntity");
+            .add_system(load_ldtk.in_schedule(OnEnter(GameState::Playing)));
     }
 }
-
+/// Spawns the map entity
+///
+/// The ldtk map is already loaded in the LoadingPlugin
 pub fn load_ldtk(mut commands: Commands, maps: Res<MapAssets>) {
     commands.spawn(LdtkWorldBundle {
         ldtk_handle: maps.main_map.clone(),
@@ -23,9 +26,4 @@ pub fn load_ldtk(mut commands: Commands, maps: Res<MapAssets>) {
     });
 }
 
-#[derive(Bundle, LdtkEntity)]
-pub struct LevelMap {
-    #[sprite_sheet_bundle]
-    #[bundle]
-    sprite_bundle: SpriteSheetBundle,
-}
+
