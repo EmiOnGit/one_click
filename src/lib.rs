@@ -20,7 +20,8 @@ use map::MapPlugin;
 /// States of the games
 #[derive(States, Default, Clone, Eq, PartialEq, Debug, Hash)]
 enum GameState {
-    // During the loading State the LoadingPlugin will load our assets
+    /// During the loading State the LoadingPlugin will load our assets
+    /// After the loading at the start of the game, the [`GameState::Menu`] will be set automatically
     #[default]
     Loading,
     // During this State the actual game logic is executed

@@ -1,7 +1,5 @@
 use bevy::prelude::*;
-use bevy_ecs_ldtk::{
-    LdtkPlugin, LdtkWorldBundle, LevelSelection,
-};
+use bevy_ecs_ldtk::{LdtkPlugin, LdtkWorldBundle, LevelSelection};
 
 use crate::{loading::MapAssets, GameState};
 pub struct MapPlugin;
@@ -26,5 +24,3 @@ pub fn load_ldtk(mut commands: Commands, maps: Res<MapAssets>) {
         ..Default::default()
     });
 }
-
-
