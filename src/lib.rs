@@ -3,6 +3,7 @@ mod audio;
 mod loading;
 mod menu;
 mod player;
+mod map;
 
 use crate::actions::ActionsPlugin;
 use crate::audio::InternalAudioPlugin;
@@ -14,8 +15,8 @@ use bevy::app::App;
 #[cfg(debug_assertions)]
 use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
 use bevy::prelude::*;
+use map::MapPlugin;
 
-// This example game uses States to separate logic
 // See https://bevy-cheatbook.github.io/programming/states.html
 // Or https://github.com/bevyengine/bevy/blob/main/examples/ecs/state.rs
 #[derive(States, Default, Clone, Eq, PartialEq, Debug, Hash)]
@@ -37,9 +38,10 @@ impl Plugin for GamePlugin {
             .add_plugin(LoadingPlugin)
             .add_plugin(MenuPlugin)
             .add_plugin(ActionsPlugin)
+            .add_plugin(MapPlugin)
             .add_plugin(InternalAudioPlugin)
             .add_plugin(PlayerPlugin);
-
+        // Only log frame time if we are in debug mode
         #[cfg(debug_assertions)]
         {
             app.add_plugin(FrameTimeDiagnosticsPlugin::default())
