@@ -1,10 +1,10 @@
 mod actions;
 mod audio;
+mod debug;
 mod loading;
 mod map;
 mod menu;
 mod player;
-mod debug;
 use crate::actions::ActionsPlugin;
 use crate::audio::InternalAudioPlugin;
 use crate::loading::LoadingPlugin;

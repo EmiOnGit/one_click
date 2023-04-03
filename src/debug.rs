@@ -1,4 +1,7 @@
-use bevy::{prelude::{Plugin, KeyCode}, input::common_conditions::input_toggle_active};
+use bevy::{
+    input::common_conditions::input_toggle_active,
+    prelude::{KeyCode, Plugin},
+};
 use bevy_inspector_egui::quick::WorldInspectorPlugin;
 
 pub struct DebugPlugin;
