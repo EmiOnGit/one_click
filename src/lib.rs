@@ -1,9 +1,9 @@
 mod actions;
 mod audio;
 mod loading;
+mod map;
 mod menu;
 mod player;
-mod map;
 
 use crate::actions::ActionsPlugin;
 use crate::audio::InternalAudioPlugin;
