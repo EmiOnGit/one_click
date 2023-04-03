@@ -1,10 +1,12 @@
 use crate::actions::Actions;
 use crate::loading::TextureAssets;
 use crate::GameState;
+use crate::map::TILE_SIZE;
 use bevy::prelude::*;
 
 pub struct PlayerPlugin;
 
+/// Marker component for the player
 #[derive(Component)]
 pub struct Player;
 
@@ -20,8 +22,14 @@ impl Plugin for PlayerPlugin {
 fn spawn_player(mut commands: Commands, textures: Res<TextureAssets>) {
     commands
         .spawn(SpriteBundle {
+            sprite: Sprite {
+                // The player should have the size of one tile
+                custom_size: Some(TILE_SIZE),
+                ..default()
+            },
             texture: textures.texture_bevy.clone(),
-            transform: Transform::from_translation(Vec3::new(0., 0., 1.)),
+            // TODO we should save the player start position with the level
+            transform: Transform::from_translation(Vec3::new(7. * TILE_SIZE.x - TILE_SIZE.x / 2., TILE_SIZE.y / 2., 2.)),
             ..Default::default()
         })
         .insert(Player);

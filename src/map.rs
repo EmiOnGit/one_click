@@ -5,7 +5,8 @@ use bevy_ecs_ldtk::{
 
 use crate::{loading::MapAssets, GameState};
 pub struct MapPlugin;
-
+/// The size of one tile
+pub const TILE_SIZE: Vec2 = Vec2::splat(32.);
 /// This plugin loads all assets in the loading game state
 impl Plugin for MapPlugin {
     fn build(&self, app: &mut App) {
