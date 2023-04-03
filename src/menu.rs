@@ -36,7 +36,8 @@ fn setup_menu(
     button_colors: Res<ButtonColors>,
 ) {
     commands.spawn(Camera2dBundle {
-        transform: Transform::from_translation(Vec3::new(200., 100., 1000.)),
+        transform: Transform::from_translation(Vec3::new(200., 100., 1000.))
+            .with_scale(Vec3::new(0.5, 0.5, 1.)),
         ..default()
     });
     commands

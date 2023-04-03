@@ -19,8 +19,10 @@ impl Plugin for MapPlugin {
 ///
 /// The ldtk map is already loaded in the LoadingPlugin
 pub fn load_ldtk(mut commands: Commands, maps: Res<MapAssets>) {
-    commands.spawn(LdtkWorldBundle {
-        ldtk_handle: maps.main_map.clone(),
-        ..Default::default()
-    }).insert(Name::new("Map"));
+    commands
+        .spawn(LdtkWorldBundle {
+            ldtk_handle: maps.main_map.clone(),
+            ..Default::default()
+        })
+        .insert(Name::new("Map"));
 }
