@@ -36,6 +36,7 @@ fn spawn_player(mut commands: Commands, textures: Res<TextureAssets>) {
             )),
             ..Default::default()
         })
+        .insert(Name::new("Player"))
         .insert(Player);
 }
 
