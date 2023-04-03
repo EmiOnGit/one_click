@@ -4,7 +4,7 @@ mod loading;
 mod map;
 mod menu;
 mod player;
-
+mod debug;
 use crate::actions::ActionsPlugin;
 use crate::audio::InternalAudioPlugin;
 use crate::loading::LoadingPlugin;
@@ -15,6 +15,7 @@ use bevy::app::App;
 #[cfg(debug_assertions)]
 use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
 use bevy::prelude::*;
+use debug::DebugPlugin;
 use map::MapPlugin;
 
 /// States of the games
@@ -45,7 +46,8 @@ impl Plugin for GamePlugin {
         #[cfg(debug_assertions)]
         {
             app.add_plugin(FrameTimeDiagnosticsPlugin::default())
-                .add_plugin(LogDiagnosticsPlugin::default());
+                .add_plugin(LogDiagnosticsPlugin::default())
+                .add_plugin(DebugPlugin);
         }
     }
 }
